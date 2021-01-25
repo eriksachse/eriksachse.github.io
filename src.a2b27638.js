@@ -11675,22 +11675,22 @@ var listEls = document.querySelectorAll("#mjs-wrapper input");
 var engine = _matterJs.default.Engine.create();
 
 var stack = _matterJs.default.Composites.stack( // xx, yy, columns, rows, columnGap, rowGap, cb
-0, 0, listEls.length, 1, 0, 0, function (xx, yy, i) {
+0, 0, listEls.length, 1, 0, 1, function (xx, yy, i) {
   var _listEls$i$getBoundin = listEls[i].getBoundingClientRect(),
       width = _listEls$i$getBoundin.width,
       height = _listEls$i$getBoundin.height;
 
   console.log(i);
-  return _matterJs.default.Bodies.rectangle(window.innerWidth / 2 + i, window.innerHeight / 2, width, height, {
-    isStatic: i === 0 // || i + 1 === listEls.length
-
+  return _matterJs.default.Bodies.rectangle(window.innerWidth / 2, window.innerHeight / 2 + i * 40, width, height, {//isStatic: i === 0,
+    // || i + 1 === listEls.length
   });
 });
-
-_matterJs.default.Composites.chain(stack, 0.5, 2, 0.5, 0, {
+/*
+Matter.Composites.chain(stack, 0.5, 2, 0.5, 0, {
   stiffness: 0.1,
-  length: 40
-});
+  length: 40,
+});*/
+
 
 checkboxes.forEach(function (currentValue, currentIndex, listObj) {
   var auto;
@@ -11699,13 +11699,12 @@ checkboxes.forEach(function (currentValue, currentIndex, listObj) {
       Matter.Body.setAngularVelocity(stack.bodies[currentIndex], 1.6);*/
     if (event.currentTarget.checked) {
       auto = setInterval(function () {
-        _matterJs.default.Body.setAngularVelocity(stack.bodies[currentIndex], Math.ceil(Math.random() * 2) * (Math.round(Math.random()) ? 1 : -1));
-      }, 2000);
+        _matterJs.default.Body.setAngularVelocity(stack.bodies[currentIndex], Math.ceil(Math.random() * 4) * (Math.round(Math.random()) ? 1 : -1));
+      }, Math.floor(Math.random() * 4000) + 1500);
     } else {
       auto = clearInterval(auto);
     }
 
-    console.log("change");
     var counter = 0;
 
     for (var i = 0; i < checkboxes.length; i++) {
@@ -11720,11 +11719,7 @@ checkboxes.forEach(function (currentValue, currentIndex, listObj) {
   });
 });
 
-var mouseConstraint = _matterJs.default.MouseConstraint.create(engine, {
-  element: document.querySelector("#mjs-wrapper")
-});
-
-_matterJs.default.World.add(engine.world, [stack, mouseConstraint]);
+_matterJs.default.World.add(engine.world, [mouseConstraint]);
 
 listEls.forEach(function (e) {
   e.style.position = "absolute";
@@ -11813,7 +11808,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51906" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57986" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
