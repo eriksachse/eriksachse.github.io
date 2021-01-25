@@ -11681,15 +11681,16 @@ var stack = _matterJs.default.Composites.stack( // xx, yy, columns, rows, column
       height = _listEls$i$getBoundin.height;
 
   console.log(i);
-  return _matterJs.default.Bodies.rectangle(window.innerWidth / 2 + i, window.innerHeight / 2, width, height, {//isStatic: i === 0
-    // || i + 1 === listEls.length
+  return _matterJs.default.Bodies.rectangle(window.innerWidth / 2 + i, window.innerHeight / 2, width, height, {
+    isStatic: i === 0 // || i + 1 === listEls.length
+
   });
 });
-/*Matter.Composites.chain(stack, 1.5, 1, 0.5, 0, {
+
+_matterJs.default.Composites.chain(stack, 0.5, 2, 0.5, 0, {
   stiffness: 0.1,
   length: 40
-});*/
-
+});
 
 checkboxes.forEach(function (currentValue, currentIndex, listObj) {
   var auto;
@@ -11717,7 +11718,7 @@ checkboxes.forEach(function (currentValue, currentIndex, listObj) {
       }
     }
   });
-}); //Matter.Body.setAngularVelocity(stack.bodies[currentIndex], 1.6);
+});
 
 var mouseConstraint = _matterJs.default.MouseConstraint.create(engine, {
   element: document.querySelector("#mjs-wrapper")
@@ -11812,7 +11813,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56339" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51906" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
