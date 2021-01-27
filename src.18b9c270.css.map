@@ -1,0 +1,1 @@
+{"version":3,"sources":["styles.css"],"names":[],"mappings":"AAAA,EACE,qBAAsB,CACtB,QAAS,CACT,SACF,CAEA,UAEE,WAAY,CACZ,eACF","file":"src.18b9c270.css","sourceRoot":"..","sourcesContent":["* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\nhtml,\nbody {\n  height: 100%;\n  overflow: hidden;\n}\n/* input {\n  transform: scale(2);\n} */\n"]}

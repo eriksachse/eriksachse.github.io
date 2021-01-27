@@ -11699,8 +11699,8 @@ checkboxes.forEach(function (currentValue, currentIndex, listObj) {
       Matter.Body.setAngularVelocity(stack.bodies[currentIndex], 1.6);*/
     if (event.currentTarget.checked) {
       auto = setInterval(function () {
-        _matterJs.default.Body.setAngularVelocity(stack.bodies[currentIndex], Math.ceil(Math.random() * 4) * (Math.round(Math.random()) ? 1 : -1));
-      }, Math.floor(Math.random() * 4000) + 1500);
+        _matterJs.default.Body.setAngularVelocity(stack.bodies[currentIndex], Math.floor(Math.random() * 6) * (Math.round(Math.random()) ? 1 : -1));
+      }, Math.floor(Math.random() * 500) + 500);
     } else {
       auto = clearInterval(auto);
     }
@@ -11775,11 +11775,17 @@ window.addEventListener("deviceorientation", updateGravity);
         y = _block$vertices$.y;
     li.style.top = "".concat(y, "px");
     li.style.left = "".concat(x, "px");
-    li.style.transform = "translate(-50%, -50%) \n                          rotate(".concat(block.angle, "rad) \n                          translate(50%, 50%)");
+    li.style.transform = "translate(-50%, -50%)\n                          rotate(".concat(block.angle, "rad) \n                          translate(50%, 50%)");
   });
 
   _matterJs.default.Engine.update(engine);
 })();
+
+window.addEventListener("resize", function () {
+  "use strict";
+
+  window.location.reload();
+});
 },{"./styles.css":"src/styles.css","matter-js":"node_modules/matter-js/build/matter.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -11808,7 +11814,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "58815" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64029" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
