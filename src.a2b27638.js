@@ -11669,13 +11669,17 @@ var _matterJs = _interopRequireDefault(require("matter-js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var console = {
+  about: "www-development studio based in weimar, germany",
+  works: ""
+};
 var checkboxes = document.querySelectorAll("input");
 var listEls = document.querySelectorAll("#mjs-wrapper input");
 
 var engine = _matterJs.default.Engine.create();
 
 var stack = _matterJs.default.Composites.stack( // xx, yy, columns, rows, columnGap, rowGap, cb
-2, 2, listEls.length, 1, 0, 0, function (xx, yy, i) {
+0, 0, listEls.length, 1, 0, 0, function (xx, yy, i) {
   var _listEls$i$getBoundin = listEls[i].getBoundingClientRect(),
       width = _listEls$i$getBoundin.width,
       height = _listEls$i$getBoundin.height;
@@ -11714,7 +11718,7 @@ checkboxes.forEach(function (currentValue, currentIndex, listObj) {
       }
 
       if (counter === checkboxes.length) {
-        window.location.href = "mailto:erik@napoleon.services";
+        window.location.href = "mailto:erik@napoleon.services?subject=Cool%20website,%20dude!";
       }
     }
   });
@@ -11787,6 +11791,66 @@ window.addEventListener("resize", function () {
 
   window.location.reload();
 });
+
+var lettering = function lettering(el, optionalArg) {
+  var text = el.innerHTML,
+      arg = optionalArg || "char",
+      size = window.getComputedStyle(el).getPropertyValue("font-size").substring(0, 2);
+  if (el.classList.contains("fallback")) ;
+
+  if (el.parentNode.getAttribute("aria-hidden") === null) {
+    var clone = el.cloneNode(true);
+    clone.classList.add("fallback");
+    el.setAttribute("aria-hidden", "true");
+    clone.classList.add("hide");
+    el.parentNode.insertBefore(clone, el.nextSibling);
+  }
+
+  el.innerHTML = "";
+
+  if (arg == "char") {
+    for (var i = 0; i < text.length; i++) {
+      var span = document.createElement("span");
+      span.innerHTML = text[i];
+
+      if (text[i] == " ") {
+        span.style.margin = "0 " + size / 10 + "px";
+      }
+
+      span.classList.add("char" + (i + 1));
+      el.appendChild(span);
+    }
+  } else if (arg == "words") {
+    var words = text.split(" ");
+
+    for (var i = 0; i < words.length; i++) {
+      var span = document.createElement("span");
+      span.innerHTML = words[i];
+      span.classList.add("word" + (i + 1));
+      span.style.margin = "0 " + size / 10 + "px";
+      el.appendChild(span);
+    }
+  } else if (arg == "lines") {
+    var lines = text.split("<br>");
+    el.style.display = "block";
+
+    for (var i = 0; i < lines.length; i++) {
+      var span = document.createElement("span");
+      span.innerHTML = lines[i];
+      span.classList.add("line" + (i + 1));
+      span.style.display = "block";
+      el.appendChild(span);
+    }
+  }
+};
+
+var text = document.getElementsByClassName("lettering");
+var i;
+
+for (i = 0; i < text.length; i++) {
+  // lettering(text[i]);
+  console.log(text[i]);
+}
 },{"./styles.css":"src/styles.css","matter-js":"node_modules/matter-js/build/matter.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -11815,7 +11879,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50436" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52994" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
